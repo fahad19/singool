@@ -1,0 +1,711 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Singool.js</title>
+
+    <link rel="stylesheet" href="./docs/styles.css">
+    <link rel="stylesheet" href="./docs/pygment_trac.css">
+    <style>
+      ul#nav ul { margin-bottom: 0px; margin-left: -15px; }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Singool.js</h1>
+        <p>Lightweight JavaScript framework for developing single-page web applications.</p>
+        <p class="view"><a href="https://github.com/fahad19/singool">View the Project on GitHub <small>fahad19/singool</small></a></p>
+        <ul>
+          <li><a href="https://github.com/fahad19/singool/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/fahad19/singool/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/fahad19/singool">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        
+
+<h2>Table of contents</h2>
+
+<ul id="nav">
+  <li><a href="#introduction">Introduction</a></li>
+  <li>
+    <a href="#getting-started">Getting started</a>
+    <ul>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#links">Links</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#develop">Developing with Singool</a>
+    <ul>
+      <li><a href="#configuration">Configuration</a></li>
+      <li><a href="#file-structure">File structure</a></li>
+      <li><a href="#commonjs">CommonJS</a></li>
+      <li><a href="#bootstrap">Bootstrap</a></li>
+      <li><a href="#routes">Routes</a></li>
+      <li>
+        <a href="#models">Models</a>
+        <ul>
+          <li><a href="#schema">Schema</a></li>
+          <li><a href="#input-types">Input types</a></li>
+          <li><a href="#default-attributes">Default attributes</a></li>
+          <li><a href="#validation">Validation</a></li>
+          <li><a href="#validation-rules">Built in validation rules</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#collections">Collections</a>
+        <ul>
+          <li><a href="#collection-url">URL</a></li>
+          <li><a href="#local-storage">Local Storage</a></li>
+        </ul>
+      </li>
+      <li><a href="#views">Views</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li>
+        <a href="#helpers">Helpers</a>
+        <ul>
+          <li><a href="#html-helper">HTML helper</a></li>
+          <li><a href="#form-helper">Form helper</a></li>
+        </ul>
+      </li>
+      <li><a href="#libraries">Libraries</a></li>
+      <li><a href="#vendors">Vendors</a></li>
+      <li>
+        <a href="#plugins">Plugins</a>
+        <ul>
+          <li><a href="#plugin-structure">File structure</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#themes">Themes</a>
+        <ul>
+          <li><a href="#theme-structure">File structure</a></li>
+          <li><a href="#theme-layout">Layout</a></li>
+          <li><a href="#theme-css">CSS</a></li>
+          <li><a href="#theme-javascript">JavaScript</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+
+
+<hr />
+
+
+
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Singool.js is a lightweight framework built on top of <a href="http://backbonejs.org/">Backbone.js</a> that helps you develop single-page web applications. It has a structure similar to popular server-side MVC frameworks, and supports plugins and themes.</p>
+
+<p>It is released under the MIT License.</p>
+
+
+
+
+
+<hr />
+
+
+
+
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>Let's get Singool up and running!</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<p>We will require <a href="http://nodejs.org/#download">Node.js with npm</a> installed.</p>
+
+<p>Once we have Node, we need to install <a href="http://coffeescript.org/">CoffeeScript</a>. It is not necessary for you to write your Singool application in CoffeeScript, but we need the <code>cake</code> command to run from command line.</p>
+
+<pre><code>$ npm install -g coffee-script</code></pre>
+
+<h3 id="installation">Installation</h3>
+
+<pre><code>$ git clone git@github.com:fahad19/singool.git
+$ cd singool
+$ npm install</code></pre>
+
+<h3 id="usage">Usage</h3>
+
+<p>Singool gives you a number of options to perform build tasks via the <code>cake</code> command.</p>
+
+<pre><code>$ cake</code></pre>
+
+<p>The quickest way to get up and running is by starting a real time server that lets you run your app in the browser as you make changes to your code without having to compile them again manually.</p>
+
+<pre><code>$ cake server
+Server running at http://localhost:3000</code></pre>
+
+<h3 id="demo">Demo</h3>
+
+<p>Coming soon to a browser near you...</p>
+
+<h3 id="links">Links</h3>
+
+<ul>
+  <li><a href="https://github.com/fahad19/singool/issues">Issues</a></li>
+  <li><a href="https://groups.google.com/forum/#!forum/singooljs">Google Group</a></li>
+</ul>
+
+
+
+<hr />
+
+
+
+
+
+<h2 id="develop">Developing with Singool</h2>
+
+
+
+
+
+<h3 id="configuration">Configuration</h3>
+
+<p>You can specify basic configuration values instructing whether to compress JS/CSS when compiling, what plugins and theme to load, etc from the config file located at <code>/config.js</code>.
+
+
+
+
+
+<h3 id="file-structure">File structure</h3>  
+        
+<p>A basic Singool app looks like this:</p>
+     
+<pre>/public
+  /app
+    /collections
+    /config
+      /bootstrap.coffee
+      /router.coffee
+      /vendors.json
+    /helpers
+    /lib
+    /models
+    /templates
+    /tests
+    /vendors
+    /views
+  /lib
+  /plugins
+  /vendors
+  /themes</pre>
+
+
+
+
+
+<h3 id="commonjs">CommonJS</h3>
+
+<p>Singool uses a <a href="https://github.com/fahad19/stitch-extra">fork</a> of <a href="https://github.com/sstephenson">@sstephenson</a>'s <a href="https://github.com/sstephenson/stitch">Stitch</a> which lets us access our JavaScript files as CommonJS modules in the browser.<p>
+
+<p>For example, we have have a directory with two files like this:</p>
+
+<pre>/public/js/app
+  a.coffee
+  b.coffee</pre>
+
+<p>Content of a.coffee</p>
+
+<pre><code>class A
+  foo: (bar) ->
+    bar
+
+module.exports = A</code></pre>
+
+<p>Now from file <code>b.coffee</code>, we can require() the class <code>A</code> like this:</p>
+
+<pre><code>A = require 'a'</code></pre>
+
+
+
+
+
+<h3 id="bootstrap">Bootstrap</h3>
+
+<p>Bootstrap file located at <code>/public/js/app/config/bootstrap.coffee</code> is responsible for doing anything before your app loads.</p>
+
+<p>It is mainly used for instantiating Router classes like:</p>
+
+<pre><code>AppRouter = require 'config/router'
+window.appRouter = new AppRouter</code></pre>
+
+
+
+
+
+<h3 id="routes">Routes</h3>
+
+<p>Routes file located at <code>/public/js/app/config/routes.coffee</code> is responsible for connecting client-side pages to actions and events.</p>
+
+<p>For example, if you want your app to do something when the user visits <code>http://localhost:3000/#!/foo</code>, your <code>routes.coffee</code> file will look something like:</p>
+
+<pre><code>class AppRouter extends require('router')
+  
+  routes:
+    '!/foo': 'foo'
+  
+  foo: ->
+    console.log 'foo page loaded'
+  
+module.exports = AppRouter</code></pre>
+
+<p>Read more about Backbone.Router <a href="http://backbonejs.org/#Router">here</a>.</p>
+
+
+
+<h3 id="models">Models</h3>
+
+<p>If you want an example from a RDBMS point of view, the best way to describe a model would be a record in the table.</p>
+
+<p>For example, a particular User can be a represented by a model at <code>/public/js/app/models/user.coffee</code></p>
+
+<pre><code>class User extends require('model')
+  
+module.exports = User</code></pre>
+
+<p>Read more about Backbone.Model <a href="http://backbonejs.org/#Model">here</a>.</p>
+
+<h4 id="schema">Schema</h4>
+
+<p>Models have their own schema. This helps at later stages when generating forms or validating user input data against validation logic.</p>
+
+<p>For <code>User</code> model, the schema would look something like:</p>
+
+<pre><code>class User extends require('model')
+  
+  schema:
+    name:
+      label: 'Name'
+      type: 'text'
+    email:
+      label: 'Email'
+      type: 'text'
+    gender:
+      label: 'Gender'
+      type: 'select'
+      options:
+        f: 'Female'
+        m: 'Male'
+      empty: ' - Please choose one - '
+
+module.exports = User</code></pre>
+
+<p>From the above schema, we understand that <code>User</code> has four fields: name, email and gender.</p>
+
+<h4 id="input-types">Input types</h4>
+
+Model schema in Singool supports various input types:
+
+<ul>
+  <li>text</li>
+  <li>textarea</li>
+  <li>select</li>
+  <li>checkbox</li>
+  <li>object</li>
+</ul>
+
+<h4 id="default-attributes">Default attributes</h4>
+
+<p>It is likely sometimes you want models to have some default values when they are first instantiated. You can do so like this:</p>
+
+<pre><code>class User extends require('model')
+
+  defaults:
+    name: null
+    email: null
+    gender: null
+
+module.exports = User</code></pre>
+
+<h4 id="validation">Validation</h4>
+
+<p>Model validation can be specified in the schema. For example, if we do not want <code>User</code> model to be saved with the <code>name</code> field left blank, we can:</p>
+
+<pre><code>class User extends require('model')
+  
+  schema:
+    name:
+      label: 'Name'
+      type: 'text'
+      validate:
+        notEmpty:
+          rule: 'notEmpty'
+          message: 'Field cannot be empty.'
+
+module.exports = User</code></pre>
+
+<p>You can also pass your own RegExp as a rule, as well as functions. Function takes (<code>value</code>, <code>attributes</code>, <code>model</code>) as arguments.</p>
+
+<h4 id="validation-rules">Built in validation rules</h4>
+
+<ul>
+  <li>notEmpty</li>
+</ul>
+
+
+
+
+<h3 id="collections">Collections</h3>
+
+<p>Collections are, well, collections of models. For <code>User</code> model, we can have a collection called <code>Users</code>. A collection is usually a plural form of the model's name.</p>
+
+<p>We can place our <code>Users</code> collection at <code>/public/js/app/collections/users.coffee</code></p>
+
+<pre><code>class Users extends require('collection')
+  
+  model: require 'models/user'
+
+module.exports = Users</code></pre>
+
+<p>Read more about Backbone.Collection <a href="http://backbonejs.org/#Collection">here</a>.</p>
+
+<h4 id="collection-url">URL</h4>
+
+<p>Location on the server:</p>
+
+<pre><code>class Users extends require('collection')
+  
+  model: require 'models/user'
+
+  url: '/users'
+
+module.exports = Users</code></pre>
+
+<h4 id="local-storage">Local Storage</h4>
+
+<p>If you choose not to interact with the server, and store data in HTML5 localStorage by using <a href="http://documentcloud.github.com/backbone/docs/backbone-localstorage.html">backbone-localstorage.js</a>:</p>
+
+<pre><code>class Users extends require('collection')
+  
+  model: require 'models/user'
+
+  localStorage: new Store 'users'
+
+module.exports = Users</code></pre>
+
+<p>This will require you to have backbone-localstorage.js file included as a vendor, and we will cover this in the Vendors section later.</p>
+
+
+
+
+
+<h3 id="views">Views</h3>
+
+<p>Views are used for the logic behind your interface. They themselves do not contain the HTML/CSS, but used for rendering and binding any changes to your elements in the DOM.</p>
+
+<p>For example, we may want to have a view for <code>http://localhost:3000/#!/foo</code>. And we write our View at <code>/public/js/app/views/foo.coffee</code>:</p>
+
+<pre><code>class FooView extends require('view')
+
+  template: require 'templates/foo/index'
+
+  render: =>
+    @$el.html @template()
+    @
+
+module.exports = FooView</code></pre>
+
+<p>Just in case your are wondering, the template file will be located at <code>/public/js/app/templates/index.underscore</code>. We dill discuss about Templates in later section.</p>
+
+<p>We need to instantiate our view from the Router too so that it is shown when <code>#!/foo</code> page is visited:</p>
+
+<pre><code>class AppRouter extends require('router')
+  
+  routes:
+    '!/foo': 'foo'
+  
+  foo: ->
+    Foo = require 'views/foo'
+    fooView = new FooView
+    $('#main').html fooView.render().el
+  
+module.exports = AppRouter</code></pre>
+
+<p>Read more about Backbone.View <a href="http://documentcloud.github.com/backbone/#View">here</a>.</p>
+
+
+
+
+<h3 id="templates">Templates</h3>
+
+<p>Templates are where your HTML comes from. Singool already uses <a href="http://documentcloud.github.com/underscore/">Underscore.js</a> since that is a dependency for using Backbone.js. So it uses its <a href="http://documentcloud.github.com/underscore/#template">templating system</a> by default. You are of course free to use your own if needed.</p>
+
+<p>From the example of Views above, we needed a template for FooView at <code>/public/js/app/templates/foo/index.underscore</code>:</p>
+
+<pre><code>&lt;p&gt;This is my &lt;strong&gt;HTML&lt;/strong&gt; code here&lt;/p&gt;</code></pre>
+
+
+
+
+
+<h3 id="helpers">Helpers</h3>
+
+<p>Helpers are made available to your Views and Templates for helping with common tasks.</p>
+
+<p>An example helper can be placed at <code>/public/js/app/helpers/foo.coffee</code>:</p>
+
+<pre><code>class FooHelper extends require('helper')
+
+  bar: ->
+    "string from helper"
+
+module.exports = FooHelper</code></pre>
+
+<p>They are then made available to your Views like:</p>
+
+<pre><code>class FooView extends require('view')
+
+  helpers:
+    foo: require 'helpers/foo'
+
+  render:
+    stringFromHelper = @foo.bar()
+    @
+
+module.exports = FooView</code></pre>
+
+<p>And from your Underscore templates:</p>
+
+<pre><code>&lt;p&gt;The string from helper is: &lt;%= this.foo.bar() %&gt;&lt;/p&gt;</code></pre>
+
+<p>Singool comes with two helpers built in, and they are always made available to your views and Underscore templates:</p>
+
+<h4 id="html-helper">HTML helper</h4>
+
+<p>Methods:</p>
+
+<ul>
+  <li>
+    <h4>breadcrumbs()</h4>
+    <p>Set some breadcrumbs in your view:</p>
+<pre><code>class FooView extends require('view')
+
+  render: =>
+    @settings.breadcrumbs = [
+      {title: 'Home', url: '#!/'}
+      {title: 'Foo', url: '#!/foo'}
+    ]
+    @
+
+module.exports = FooView</code></pre>
+    <p>And use it from your Underscore template:</p>
+<pre><code>&lt;%= this.html.breadcrumbs() %&gt;</code></pre>
+  </li>
+</ul>
+
+<h4 id="form-helper">Form helper</h4>
+
+<p>Form helper, as anyone would guess, is used for handling generation of form elements both manually or automatically from Model's schema.</p>
+
+<p>An example of generating a form for User model in a View:</p>
+
+<pre><code>class FooView extends ('view')
+
+  render: =>
+    User = require 'models/user'
+    @$el.html @template
+      model: new User
+
+    @
+
+module.exports = FooView</code></pre>
+
+<p>Now from our template we utilize the Form helper for generating a form according to User model's schema with a submit and reset button:</p>
+
+<pre><code>&lt;%= this.form.create(model) %&gt;
+&lt;fieldset&gt;
+  &lt;%= this.form.inputs() %&gt;
+
+  &lt;%= this.form.submit() %&gt;
+  &lt;%= this.form.reset() %&gt;
+&lt;/fieldset&gt;
+&lt;%= this.form.end() %&gt;</code></pre>
+
+<p>Methods:</p>
+
+<ul>
+  <li><h4>create(model, attributes = {})</h4></li>
+  <li><h4>end()</h4></li>
+  <li><h4>inputs()</h4></li>
+  <li><h4>input(field, options)</h4></li>
+  <li><h4>text(field, options)</h4></li>
+  <li><h4>textarea(field, options)</h4></li>
+  <li><h4>select(field, options)</h4></li>
+  <li><h4>checkbox(field, options)</h4></li>
+  <li><h4>object(field, options)</h4></li>
+  <li><h4>submit(label = 'Save', attributes = {})</h4></li>
+  <li><h4>reset(label = 'Cancel', attributes = {})</h4></li>
+  <li><h4>showErrors(form, model)</h4></li>
+  <li><h4>clearErrors(form)</h4></li>
+</ul>
+
+
+
+
+
+<h3 id="libraries">Libraries</h3>
+
+<p>Any first-party classes that do not fit in as a View, Model, Collection, Router or Helper and needed to be used as CommonJS (that is, via require() function) is expected to go inside <code>/public/js/app/lib</code>.</p>
+
+
+
+
+<h3 id="vendors">Vendors</h3>
+
+<p>Vendors are JavaScript code that you want to be loaded in your app, but NOT as CommonJS. A perfect example would be a jQuery plugin.</p>
+
+<p>Vendors are defined in <code>/public/js/app/config/vendors.json</code> file as an array:</p>
+
+<pre><code>["jquery.plugin.js"]</code></pre>
+
+<p>This will then load the jQuery plugin located at <code>/public/js/app/vendors/jquery.plugin.js</code>.</p>
+
+
+
+<h3 id="plugins">Plugins</h3>
+
+<p>Plugins are like self contained mini-apps themselves, only that they are loaded after the main app has been loaded.</p>
+
+<p>Suppose you have a plugin called <code>Tasks</code> at <code>/public/js/plugins/tasks</code>, you need to add it in your config file at <code>/config.js:</code></p>
+
+<pre><code>var plugins = ['tasks'];</code></pre>
+
+<p>All plugin classes can be accessed by <code>require()</code> function with the plugin named prefixed in the path:</p>
+
+<ul>
+  <li>
+    <p>Router:</p>
+    <pre><code>router = require 'tasks/config/router'</code></pre>
+  </li>
+  <li>
+    <p>Models:</p>
+    <pre><code>task = require 'tasks/models/task'</code></pre>
+  </li>
+  <li>
+    <p>Collections:</p>
+    <pre><code>tasks = require 'tasks/collections/tasks'</code></pre>
+  </li>
+  <li>...and so on</li>
+</ul>
+
+<h4 id="plugin-structure">File structure</h4>
+
+<pre><code>/public/js/plugins/my_plugin
+  /config
+    /bootstrap.coffee
+    /router.coffee
+    /vendors.json
+  /collections
+  /lib
+  /models
+  /templates
+  /vendors
+  /views
+</code></pre>
+
+
+<h3 id="themes">Themes</h3>
+
+<p>Singool is also themeable. It comes with a default themed called, well, <code>default</code> which uses the very cool <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a>. Themes are placed under <code>/public/themes</code> directory.</p>
+
+<p>To load your chosen theme, edit <code>/config.js</code> file:</p>
+
+<pre><code>var theme = 'my_theme';</code></pre>
+
+<h4 id="theme-structure">File structure</h4>
+
+<pre><code>/public/themes/my_theme
+  /config
+    /vendors.json
+  /css
+    /theme.less
+  /layouts
+    /index.html
+  /vendors
+</code></pre>
+
+<h4 id="theme-layout">Layout</h4>
+
+<p>All themes must come with a layout. The default theme has a layout like this at <code>/public/themes/default/layouts/index.html</code>:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Singool&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/app.css&quot; /&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;./js/app.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    &lt;header&gt;&lt;/header&gt;
+    &lt;div id=&quot;main&quot; class=&quot;container&quot;&gt;&lt;/div&gt;
+    &lt;footer&gt;&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p><code>app.js</code> and <code>app.css</code> files will be compiled and served by Singool, the layout just need to point them.</p>
+
+<h4 id="theme-css">CSS</h4>
+
+<p>Singool uses <a href="http://lesscss.org/">LESS</a> for its CSS, mainly because of having compatiblity with Twitter Bootstrap. So it expects you to write your CSS in LESS too.</p>
+
+<p>You are of course allowed to write your CSS like the way you do already. You do not have to learn anything new unless you want to explore the features of LESS.</p>
+
+<p>Themes are required to have a LESS file at <code>/public/themes/my_theme/css/theme.less</code>.</p>
+
+
+<h4 id="theme-vendors">JavaScript</h4>
+
+<p>Theme's JavaScript files are treated as vendors. To load a custom JS file of your theme, edit the file at <code>/public/themes/my_theme/config/vendors.json</code></p>
+
+<pre><code>["my_theme.js"]</code></pre>
+
+<p>This will then load the file at <code>/public/themes/my_theme/vendors/my_theme.js</code></p>
+
+
+
+
+
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/fahad19">fahad19</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="./docs/scale.fix.js"></script>
+    
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2124770-13']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>
