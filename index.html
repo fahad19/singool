@@ -319,11 +319,50 @@ module.exports = User</code></pre>
 Model schema in Singool supports various input types:
 
 <ul>
-  <li>text</li>
-  <li>textarea</li>
-  <li>select</li>
-  <li>checkbox</li>
-  <li>object</li>
+  <li>
+    <h4>text</h4>
+<pre><code>schema:
+  title:
+    type: 'text'
+    label: 'Title'</code></pre>
+  </li>
+  <li>
+    <h4>textarea</h4>
+<pre><code>schema:
+  description:
+    type: 'textarea'
+    label: 'Description'</code></pre>
+  </li>
+  <li>
+    <h4>select</h4>
+<pre><code>schema:
+  mood:
+    type: 'select'
+    label: 'Mood'
+    options:
+      happy: 'Happy'
+      sad: 'Sad'</code></pre>
+  </li>
+  <li>
+    <h4>checkbox</h4>
+<pre><code>schema:
+  status:
+    type: 'checkbox'
+    label: 'Done?'</code></pre>
+  </li>
+  <li>
+    <h4>object</h4>
+<pre><code>schema:
+  address:
+    type: 'object'
+    schema:
+      line1:
+        type: 'text'
+        label: 'Line 1'
+      line2:
+        type: 'text'
+         label: 'Line 2'</code></pre>
+  </li>
 </ul>
 
 <h4 id="default-attributes">Default attributes</h4>
