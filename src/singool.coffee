@@ -101,7 +101,7 @@ class Singool
 
       coffee: (module, filename) =>
         source = fs.readFileSync filename, 'utf8'
-        module._compile cs.compile source, filename
+        module._compile cs.compile(source), filename
 
       underscore: (module, filename) =>
         source = fs.readFileSync(filename, 'utf8')
