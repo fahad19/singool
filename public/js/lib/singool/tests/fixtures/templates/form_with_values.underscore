@@ -1,0 +1,14 @@
+<form>
+  <input name="title" value="title here..." />
+  
+  <textarea name ="description">description here...</textarea>
+  
+  <select name="priority">
+    <option></option>
+    <option value="high">high</option>
+    <option value="medium" selected="selected">medium</option>
+    <option value="low">low</option>
+  </select>
+  
+  <input name="done" type="checkbox" checked="checked" />
+</form>

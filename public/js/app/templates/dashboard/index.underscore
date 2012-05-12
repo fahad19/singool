@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="span12">
+    <div id="content">
+      <div class="page-header">
+        <h1>Dashboard</h1>
+      </div>
+      
+      <div class="alert alert-success">
+        <p><strong>Well done!</strong> You have successfully set up Singool!</p>
+        <p>To modify the content of this page, edit the file at <strong>/public/js/app/templates/dashboard/index.underscore</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>

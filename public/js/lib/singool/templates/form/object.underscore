@@ -1,0 +1,9 @@
+<div class="control-group">
+  <% if (options.label) { %>
+  <label class="control-label"><%= options.label %></label>
+  <% } %>
+
+  <div class="controls-container">
+
+  </div>
+</div>

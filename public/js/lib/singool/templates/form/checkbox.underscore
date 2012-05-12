@@ -1,0 +1,14 @@
+<div class="control-group">
+  <% if (options.label) { %>
+  <label class="control-label"><%= options.label %></label>
+  <% } %>
+  <div class="controls">
+    <label class="checkbox">
+    <% if (options.value) { %>
+      <input type="checkbox" name="<%= field %>" value="1" checked="checked" />
+    <% } else { %>
+      <input type="checkbox" name="<%= field %>" value="1" />
+    <% } %>
+    </label>
+  </div>
+</div>

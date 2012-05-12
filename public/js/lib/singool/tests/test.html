@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Singool Test Runner</title>
+  <link rel="stylesheet" href="./css/mocha.css">
+  <script src="./js/app.js"></script>
+  <script src="./js/vendors/mocha.js"></script>
+  <script src="./js/vendors/expect.js"></script>
+  <script>mocha.setup("bdd");</script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <script>
+  $(document).ready(function() {
+      var cases = require('singool/config').testCases;
+      for (var i in cases) {
+        require(cases[i]);
+      }
+      mocha.run();
+  });
+  </script>
+</body>
+</html>

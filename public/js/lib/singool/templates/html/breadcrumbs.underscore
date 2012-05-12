@@ -1,0 +1,10 @@
+<ul class="breadcrumb">
+  <% var lastK = links.length - 1; %>
+  <% _.each(links, function(v, k) { %>
+    <% if (parseInt(k) == lastK) { %>
+      <li class="active"><%= v.title %></li>
+    <% } else { %>
+      <li><a href="<%= v.url %>"><%= v.title %></a> <span class="divider">/</span> </li>
+    <% } %>
+  <% }); %>
+</ul>

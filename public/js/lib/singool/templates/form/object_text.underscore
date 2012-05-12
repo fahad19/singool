@@ -1,0 +1,4 @@
+<div class="controls">
+  <input class="<%= options.class %>" name="<%= field %>" value="<%= options.value %>" placeholder="<%= options.label %>" type="text" />
+  <span class="help-inline"></span>
+</div>

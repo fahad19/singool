@@ -1,0 +1,9 @@
+<div class="control-group">
+  <% if (options.label) { %>
+  <label class="control-label"><%= options.label %></label>
+  <% } %>
+  <div class="controls">
+    <input class="<%= options.class %>" name="<%= field %>" value="<%= options.value %>" type="text">
+    <span class="help-inline"></span>
+  </div>
+</div>
