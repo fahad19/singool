@@ -1,9 +1,9 @@
 config  = require './config'
 Singool = require 'singool'
 
-server = (static = false) ->
+server = (serveStatic = false) ->
   singool = new Singool config
-  server  = singool.createServer(static)
+  server  = singool.createServer(serveStatic)
   port    = process.env.PORT || 3000
   server.listen port
   console.log 'Server running at http://localhost:' + port
