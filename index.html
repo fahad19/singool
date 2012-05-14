@@ -583,6 +583,36 @@ module.exports = FooView</code></pre>
 &lt;/fieldset&gt;
 &lt;%= this.form.end() %&gt;</code></pre>
 
+<p>For showing validation errors on form submission from a view:</p>
+
+<pre class="prettyprint"><code>class FooView extends ('view')
+
+  events:
+    'submit form': 'submit'
+
+  submit: (e) =>
+    e.preventDefault()
+    attributes = @model.extract e.target
+
+    if @model.isNew()
+      if !@model.set attributes
+        # validation fail on adding
+        @form.showErrors e.target, @model
+      else
+        @collection.create @model
+        window.appRouter.navigate '!/some-other-page', true
+    else
+      @model.save attributes, 
+        error: (model, response) =>
+          # validation fail on editing
+          @form.showErrors e.target, model
+        success: (model, response) ->
+          window.appRouter.navigate '!/some-other-page', true
+
+    false
+
+module.exports = FooView</code></pre>
+
 <p>Methods:</p>
 
 <ul>
