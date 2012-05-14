@@ -106,6 +106,13 @@
       <li><a href="#write-tests">Writing tests</a></li>
     </ul>
   </li>
+  <li>
+    <a href="#deploy">Deploy</a>
+    <ul>
+      <li><a href="#build">Build files</a></li>
+      <li><a href="#heroku">Heroku</a></li>
+    </ul>
+  </li>
 </ul>
 
 
@@ -812,6 +819,47 @@ Test server running at http://localhost:3000</code></pre>
 <p>We first <code>describe</code> our test case at the beginning of the file, then we test whether the variable <code>foo</code> is a string and the string is 'bar'.</p>
 
 <p>Test cases do not require to be exported by <code>module.exports</code> at the end of the file.</p>
+
+
+
+<hr />
+
+
+
+<h2 id="deploy">Deploying</h2>
+
+<h3 id="build">Build files</h3>
+
+<p>Via the <code>cake</code> command, you can compile your app into 3 files (layout, CSS and JS):</p>
+
+<pre><code>$ cake build
+Theme layout file written at: /public/index.html
+CSS file written at: /public/css/app.css
+JS file writen at: /public/js/app.js</code></pre>
+
+<h3 id="heroku">Heroku</h3>
+
+<p>Deploying a Singool.js app on <a href="http://heroku.com">Heroku</a> is very easy. It already comes with a Procfile at <code>/Procfile</code>.
+
+<p>Create the app on the Cedar stack:</p>
+
+<pre><code>$ heroku create --stack cedar
+Creating sharp-rain-871... done, stack is cedar
+http://sharp-rain-871.herokuapp.com/ | git@heroku.com:sharp-rain-871.git
+Git remote heroku added</code></pre>
+
+<p>Push to Heroku:</p>
+
+<pre><code>$ git push heroku master
+...
+-----> Launching... done, v2
+       http://sharp-rain-871.herokuapp.com deployed to Heroku</code></pre>
+
+<p>Scale the web process:</p>
+
+<pre><code>$ heroku ps:scale web=1</code></pre>
+
+
 
 
       </section>
