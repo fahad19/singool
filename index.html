@@ -98,6 +98,14 @@
       </li>
     </ul>
   </li>
+  <li>
+    <a href="#test">Testing</a>
+    <ul>
+      <li><a href="#run-tests">Run tests</a></li>
+      <li><a href="#tests-structure">File structure</a></li>
+      <li><a href="#write-tests">Writing tests</a></li>
+    </ul>
+  </li>
 </ul>
 
 
@@ -760,6 +768,50 @@ module.exports = FooView</code></pre>
 
 
 
+
+<hr />
+
+
+
+
+<h2 id="test">Testing</h2>
+
+<p>Singool uses <a href="http://visionmedia.github.com/mocha/">Mocha</a> in combination with <a href="https://github.com/LearnBoost/expect.js">Expect.js</a> for testing BDD style.</p>
+
+<h3 id="run-tests">Run tests</h3>
+
+<p>To run tests, start the testing server:</p>
+
+<pre class="prettyprint"><code>$ cake test
+Test server running at http://localhost:3000</code></pre>
+
+<p>Visit <code>http://localhost:3000</code> from your browser and it will start the Mocha test runner.</p>
+
+<p>If you are using Chrome as your browser, it is best if you run tests from Incognito mode, otherwise the tests may fail because of JavaScript injections by Chrome extensions.</p>
+
+<h3 id="tests-structure">File structure</h3>
+
+<pre><code>/public/js/app/tests
+  /cases
+    /app.coffee
+  /fixtures</code></pre>
+
+<h3 id="write-tests">Writing tests</h3>
+
+<p>An example test case comes with Singool.js at: <code>/public/js/app/tests/cases/app.coffee</code></p>
+
+<pre class="prettyprint"><code>describe 'App', ->
+  
+  foo = 'bar'
+  
+  it 'test foo', ->
+    expect(foo).to.be.a 'string'
+    expect(foo).to.eql('bar');
+</code></pre>
+
+<p>We first <code>describe</code> our test case at the beginning of the file, then we test whether the variable <code>foo</code> is a string and the string is 'bar'.</p>
+
+<p>Test cases do not require to be exported by <code>module.exports</code> at the end of the file.</p>
 
 
       </section>
