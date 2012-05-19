@@ -244,7 +244,7 @@ Server running at http://localhost:3000</code></pre>
 
 <p>Content of <code>a.coffee</code>:</p>
 
-<pre class="prettyprint"><code>class A
+<pre class="prettyprint" data-lang="coffeescript"><code>class A
   foo: (bar) ->
     bar
 
@@ -252,7 +252,7 @@ module.exports = A</code></pre>
 
 <p>Now from file <code>b.coffee</code>, we can require() the class <code>A</code> like this:</p>
 
-<pre class="prettyprint"><code>A = require 'a'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>A = require 'a'</code></pre>
 
 
 
@@ -264,7 +264,7 @@ module.exports = A</code></pre>
 
 <p>It is mainly used for instantiating Router classes like:</p>
 
-<pre class="prettyprint"><code>AppRouter = require 'config/router'
+<pre class="prettyprint" data-lang="coffeescript"><code>AppRouter = require 'config/router'
 window.appRouter = new AppRouter</code></pre>
 
 
@@ -277,7 +277,7 @@ window.appRouter = new AppRouter</code></pre>
 
 <p>For example, if you want your app to do something when the user visits <code>http://localhost:3000/#!/foo</code>, your <code>routes.coffee</code> file will look something like:</p>
 
-<pre class="prettyprint"><code>class AppRouter extends require('router')
+<pre class="prettyprint" data-lang="coffeescript"><code>class AppRouter extends require('router')
   
   routes:
     '!/foo': 'foo'
@@ -297,7 +297,7 @@ module.exports = AppRouter</code></pre>
 
 <p>For example, a particular User can be a represented by a model at <code>/public/js/app/models/user.coffee</code></p>
 
-<pre class="prettyprint"><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
   
 module.exports = User</code></pre>
 
@@ -309,7 +309,7 @@ module.exports = User</code></pre>
 
 <p>For <code>User</code> model, the schema would look something like:</p>
 
-<pre class="prettyprint"><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
   
   schema:
     name:
@@ -337,47 +337,67 @@ Model schema in Singool supports various input types:
 <ul>
   <li>
     <h4>text</h4>
-<pre class="prettyprint"><code>schema:
-  title:
-    type: 'text'
-    label: 'Title'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    title:
+      type: 'text'
+      label: 'Title'
+  
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>textarea</h4>
-<pre class="prettyprint"><code>schema:
-  description:
-    type: 'textarea'
-    label: 'Description'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    description:
+      type: 'textarea'
+      label: 'Description'
+
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>select</h4>
-<pre class="prettyprint"><code>schema:
-  mood:
-    type: 'select'
-    label: 'Mood'
-    options:
-      happy: 'Happy'
-      sad: 'Sad'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    mood:
+      type: 'select'
+      label: 'Mood'
+      options:
+        happy: 'Happy'
+        sad: 'Sad'
+
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>checkbox</h4>
-<pre class="prettyprint"><code>schema:
-  status:
-    type: 'checkbox'
-    label: 'Done?'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    status:
+      type: 'checkbox'
+      label: 'Done?'
+
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>object</h4>
-<pre class="prettyprint"><code>schema:
-  address:
-    type: 'object'
-    schema:
-      line1:
-        type: 'text'
-        label: 'Line 1'
-      line2:
-        type: 'text'
-         label: 'Line 2'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    address:
+      type: 'object'
+      schema:
+        line1:
+          type: 'text'
+          label: 'Line 1'
+        line2:
+          type: 'text'
+          label: 'Line 2'
+
+module.exports = Task</code></pre>
   </li>
 </ul>
 
@@ -385,7 +405,7 @@ Model schema in Singool supports various input types:
 
 <p>It is likely sometimes you want models to have some default values when they are first instantiated. You can do so like this:</p>
 
-<pre class="prettyprint"><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
 
   defaults:
     name: null
@@ -398,7 +418,7 @@ module.exports = User</code></pre>
 
 <p>Model validation can be specified in the schema. For example, if we do not want <code>User</code> model to be saved with the <code>name</code> field left blank, we can:</p>
 
-<pre class="prettyprint"><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
   
   schema:
     name:
@@ -428,7 +448,7 @@ module.exports = User</code></pre>
 
 <p>We can place our <code>Users</code> collection at <code>/public/js/app/collections/users.coffee</code></p>
 
-<pre class="prettyprint"><code>class Users extends require('collection')
+<pre class="prettyprint" data-lang="coffeescript"><code>class Users extends require('collection')
   
   model: require 'models/user'
 
@@ -440,7 +460,7 @@ module.exports = Users</code></pre>
 
 <p>Location on the server:</p>
 
-<pre class="prettyprint"><code>class Users extends require('collection')
+<pre class="prettyprint" data-lang="coffeescript"><code>class Users extends require('collection')
   
   model: require 'models/user'
 
@@ -452,7 +472,7 @@ module.exports = Users</code></pre>
 
 <p>If you choose not to interact with the server, and store data in HTML5 localStorage by using <a href="http://documentcloud.github.com/backbone/docs/backbone-localstorage.html">backbone-localstorage.js</a>:</p>
 
-<pre class="prettyprint"><code>class Users extends require('collection')
+<pre class="prettyprint" data-lang="coffeescript"><code>class Users extends require('collection')
   
   model: require 'models/user'
 
@@ -472,7 +492,7 @@ module.exports = Users</code></pre>
 
 <p>For example, we may want to have a view for <code>http://localhost:3000/#!/foo</code>. And we write our View at <code>/public/js/app/views/foo.coffee</code>:</p>
 
-<pre class="prettyprint"><code>class FooView extends require('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   template: require 'templates/foo/index'
 
@@ -486,7 +506,7 @@ module.exports = FooView</code></pre>
 
 <p>We need to instantiate our view from the Router too so that it is shown when <code>#!/foo</code> page is visited:</p>
 
-<pre class="prettyprint"><code>class AppRouter extends require('router')
+<pre class="prettyprint" data-lang="coffeescript"><code>class AppRouter extends require('router')
   
   routes:
     '!/foo': 'foo'
@@ -521,7 +541,7 @@ module.exports = AppRouter</code></pre>
 
 <p>An example helper can be placed at <code>/public/js/app/helpers/foo.coffee</code>:</p>
 
-<pre class="prettyprint"><code>class FooHelper extends require('helper')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooHelper extends require('helper')
 
   bar: ->
     "string from helper"
@@ -530,12 +550,12 @@ module.exports = FooHelper</code></pre>
 
 <p>They are then made available to your Views like:</p>
 
-<pre class="prettyprint"><code>class FooView extends require('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   helpers:
     foo: require 'helpers/foo'
 
-  render:
+  render: =>
     stringFromHelper = @foo.bar()
     @
 
@@ -555,7 +575,7 @@ module.exports = FooView</code></pre>
   <li>
     <h4>breadcrumbs()</h4>
     <p>Set some breadcrumbs in your view:</p>
-<pre class="prettyprint"><code>class FooView extends require('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   render: =>
     @settings.breadcrumbs = [
@@ -576,7 +596,7 @@ module.exports = FooView</code></pre>
 
 <p>An example of generating a form for User model in a View:</p>
 
-<pre class="prettyprint"><code>class FooView extends ('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends ('view')
 
   render: =>
     User = require 'models/user'
@@ -600,7 +620,7 @@ module.exports = FooView</code></pre>
 
 <p>For showing validation errors on form submission from a view:</p>
 
-<pre class="prettyprint"><code>class FooView extends ('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends ('view')
 
   events:
     'submit form': 'submit'
@@ -682,15 +702,15 @@ module.exports = FooView</code></pre>
 <ul>
   <li>
     <p>Router:</p>
-    <pre class="prettyprint"><code>router = require 'tasks/config/router'</code></pre>
+    <pre class="prettyprint" data-lang="coffeescript"><code>router = require 'tasks/config/router'</code></pre>
   </li>
   <li>
     <p>Models:</p>
-    <pre class="prettyprint"><code>task = require 'tasks/models/task'</code></pre>
+    <pre class="prettyprint" data-lang="coffeescript"><code>task = require 'tasks/models/task'</code></pre>
   </li>
   <li>
     <p>Collections:</p>
-    <pre class="prettyprint"><code>tasks = require 'tasks/collections/tasks'</code></pre>
+    <pre class="prettyprint" data-lang="coffeescript"><code>tasks = require 'tasks/collections/tasks'</code></pre>
   </li>
   <li>...and so on</li>
 </ul>
@@ -807,13 +827,13 @@ Test server running at http://localhost:3000</code></pre>
 
 <p>An example test case comes with Singool.js at: <code>/public/js/app/tests/cases/app.coffee</code></p>
 
-<pre class="prettyprint"><code>describe 'App', ->
+<pre class="prettyprint" data-lang="coffeescript"><code>describe 'App', ->
   
   foo = 'bar'
   
   it 'test foo', ->
     expect(foo).to.be.a 'string'
-    expect(foo).to.eql('bar');
+    expect(foo).to.eql 'bar'
 </code></pre>
 
 <p>We first <code>describe</code> our test case at the beginning of the file, then we test whether the variable <code>foo</code> is a string and the string is 'bar'.</p>
@@ -870,9 +890,25 @@ Git remote heroku added</code></pre>
     </div>
     <script src="./docs/scale.fix.js"></script>
     <script src="./docs/prettify.js"></script>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://coffeescript.org/extras/coffee-script.js"></script>
     
 <script type="text/javascript">
-  window.prettyPrint && prettyPrint()
+
+  $(document).ready(function() {
+    if (location.href.indexOf('?viewas=js') > -1) {
+      $('pre[data-lang="coffeescript"] code').each(function() {
+        var cs = $(this).html();
+        cs = String(cs).replace(/&gt;/g, '>');
+        var js = CoffeeScript.compile(cs);
+        $(this).html(js);
+      });
+
+      document.body.innerHTML = document.body.innerHTML.replace(/\.coffee/g, '.js');
+    }
+
+    window.prettyPrint && prettyPrint();
+  });
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-2124770-13']);
