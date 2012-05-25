@@ -596,7 +596,7 @@ module.exports = FooView</code></pre>
 
 <p>An example of generating a form for User model in a View:</p>
 
-<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends ('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   render: =>
     User = require 'models/user'
@@ -620,7 +620,7 @@ module.exports = FooView</code></pre>
 
 <p>For showing validation errors on form submission from a view:</p>
 
-<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends ('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   events:
     'submit form': 'submit'
