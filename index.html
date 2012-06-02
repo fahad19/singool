@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./docs/styles.css">
     <link rel="stylesheet" href="./docs/pygment_trac.css">
+    <link rel="stylesheet" href="./docs/prettify.css">
     <style>
       ul#nav ul { margin-bottom: 0px; margin-left: -15px; }
     </style>
@@ -97,6 +98,21 @@
       </li>
     </ul>
   </li>
+  <li>
+    <a href="#test">Testing</a>
+    <ul>
+      <li><a href="#run-tests">Run tests</a></li>
+      <li><a href="#tests-structure">File structure</a></li>
+      <li><a href="#write-tests">Writing tests</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#deploy">Deploy</a>
+    <ul>
+      <li><a href="#build">Build files</a></li>
+      <li><a href="#heroku">Heroku</a></li>
+    </ul>
+  </li>
 </ul>
 
 
@@ -113,7 +129,7 @@
 
 <p>It is released under the MIT License.</p>
 
-
+<p>Most of the code examples are written in CoffeeScript below. If you want to view them in JavaScript, <a href="/singool/?viewas=js">click here</a>.</p>
 
 
 
@@ -228,7 +244,7 @@ Server running at http://localhost:3000</code></pre>
 
 <p>Content of <code>a.coffee</code>:</p>
 
-<pre><code>class A
+<pre class="prettyprint" data-lang="coffeescript"><code>class A
   foo: (bar) ->
     bar
 
@@ -236,7 +252,7 @@ module.exports = A</code></pre>
 
 <p>Now from file <code>b.coffee</code>, we can require() the class <code>A</code> like this:</p>
 
-<pre><code>A = require 'a'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>A = require 'a'</code></pre>
 
 
 
@@ -248,7 +264,7 @@ module.exports = A</code></pre>
 
 <p>It is mainly used for instantiating Router classes like:</p>
 
-<pre><code>AppRouter = require 'config/router'
+<pre class="prettyprint" data-lang="coffeescript"><code>AppRouter = require 'config/router'
 window.appRouter = new AppRouter</code></pre>
 
 
@@ -257,11 +273,11 @@ window.appRouter = new AppRouter</code></pre>
 
 <h3 id="routes">Routes</h3>
 
-<p>Routes file located at <code>/public/js/app/config/routes.coffee</code> is responsible for connecting client-side pages to actions and events.</p>
+<p>Router file located at <code>/public/js/app/config/router.coffee</code> is responsible for connecting client-side pages to actions and events.</p>
 
-<p>For example, if you want your app to do something when the user visits <code>http://localhost:3000/#!/foo</code>, your <code>routes.coffee</code> file will look something like:</p>
+<p>For example, if you want your app to do something when the user visits <code>http://localhost:3000/#!/foo</code>, your <code>router.coffee</code> file will look something like:</p>
 
-<pre><code>class AppRouter extends require('router')
+<pre class="prettyprint" data-lang="coffeescript"><code>class AppRouter extends require('router')
   
   routes:
     '!/foo': 'foo'
@@ -281,7 +297,7 @@ module.exports = AppRouter</code></pre>
 
 <p>For example, a particular User can be a represented by a model at <code>/public/js/app/models/user.coffee</code></p>
 
-<pre><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
   
 module.exports = User</code></pre>
 
@@ -293,7 +309,7 @@ module.exports = User</code></pre>
 
 <p>For <code>User</code> model, the schema would look something like:</p>
 
-<pre><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
   
   schema:
     name:
@@ -321,47 +337,67 @@ Model schema in Singool supports various input types:
 <ul>
   <li>
     <h4>text</h4>
-<pre><code>schema:
-  title:
-    type: 'text'
-    label: 'Title'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    title:
+      type: 'text'
+      label: 'Title'
+  
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>textarea</h4>
-<pre><code>schema:
-  description:
-    type: 'textarea'
-    label: 'Description'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    description:
+      type: 'textarea'
+      label: 'Description'
+
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>select</h4>
-<pre><code>schema:
-  mood:
-    type: 'select'
-    label: 'Mood'
-    options:
-      happy: 'Happy'
-      sad: 'Sad'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    mood:
+      type: 'select'
+      label: 'Mood'
+      options:
+        happy: 'Happy'
+        sad: 'Sad'
+
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>checkbox</h4>
-<pre><code>schema:
-  status:
-    type: 'checkbox'
-    label: 'Done?'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    status:
+      type: 'checkbox'
+      label: 'Done?'
+
+module.exports = Task</code></pre>
   </li>
   <li>
     <h4>object</h4>
-<pre><code>schema:
-  address:
-    type: 'object'
-    schema:
-      line1:
-        type: 'text'
-        label: 'Line 1'
-      line2:
-        type: 'text'
-         label: 'Line 2'</code></pre>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    address:
+      type: 'object'
+      schema:
+        line1:
+          type: 'text'
+          label: 'Line 1'
+        line2:
+          type: 'text'
+          label: 'Line 2'
+
+module.exports = Task</code></pre>
   </li>
 </ul>
 
@@ -369,7 +405,7 @@ Model schema in Singool supports various input types:
 
 <p>It is likely sometimes you want models to have some default values when they are first instantiated. You can do so like this:</p>
 
-<pre><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
 
   defaults:
     name: null
@@ -382,7 +418,7 @@ module.exports = User</code></pre>
 
 <p>Model validation can be specified in the schema. For example, if we do not want <code>User</code> model to be saved with the <code>name</code> field left blank, we can:</p>
 
-<pre><code>class User extends require('model')
+<pre class="prettyprint" data-lang="coffeescript"><code>class User extends require('model')
   
   schema:
     name:
@@ -412,7 +448,7 @@ module.exports = User</code></pre>
 
 <p>We can place our <code>Users</code> collection at <code>/public/js/app/collections/users.coffee</code></p>
 
-<pre><code>class Users extends require('collection')
+<pre class="prettyprint" data-lang="coffeescript"><code>class Users extends require('collection')
   
   model: require 'models/user'
 
@@ -424,7 +460,7 @@ module.exports = Users</code></pre>
 
 <p>Location on the server:</p>
 
-<pre><code>class Users extends require('collection')
+<pre class="prettyprint" data-lang="coffeescript"><code>class Users extends require('collection')
   
   model: require 'models/user'
 
@@ -436,7 +472,7 @@ module.exports = Users</code></pre>
 
 <p>If you choose not to interact with the server, and store data in HTML5 localStorage by using <a href="http://documentcloud.github.com/backbone/docs/backbone-localstorage.html">backbone-localstorage.js</a>:</p>
 
-<pre><code>class Users extends require('collection')
+<pre class="prettyprint" data-lang="coffeescript"><code>class Users extends require('collection')
   
   model: require 'models/user'
 
@@ -456,7 +492,7 @@ module.exports = Users</code></pre>
 
 <p>For example, we may want to have a view for <code>http://localhost:3000/#!/foo</code>. And we write our View at <code>/public/js/app/views/foo.coffee</code>:</p>
 
-<pre><code>class FooView extends require('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   template: require 'templates/foo/index'
 
@@ -470,7 +506,7 @@ module.exports = FooView</code></pre>
 
 <p>We need to instantiate our view from the Router too so that it is shown when <code>#!/foo</code> page is visited:</p>
 
-<pre><code>class AppRouter extends require('router')
+<pre class="prettyprint" data-lang="coffeescript"><code>class AppRouter extends require('router')
   
   routes:
     '!/foo': 'foo'
@@ -493,7 +529,7 @@ module.exports = AppRouter</code></pre>
 
 <p>From the example of Views above, we needed a template for FooView at <code>/public/js/app/templates/foo/index.underscore</code>:</p>
 
-<pre><code>&lt;p&gt;This is my &lt;strong&gt;HTML&lt;/strong&gt; code here&lt;/p&gt;</code></pre>
+<pre class="prettyprint"><code>&lt;p&gt;This is my &lt;strong&gt;HTML&lt;/strong&gt; code here&lt;/p&gt;</code></pre>
 
 
 
@@ -505,7 +541,7 @@ module.exports = AppRouter</code></pre>
 
 <p>An example helper can be placed at <code>/public/js/app/helpers/foo.coffee</code>:</p>
 
-<pre><code>class FooHelper extends require('helper')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooHelper extends require('helper')
 
   bar: ->
     "string from helper"
@@ -514,12 +550,12 @@ module.exports = FooHelper</code></pre>
 
 <p>They are then made available to your Views like:</p>
 
-<pre><code>class FooView extends require('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   helpers:
     foo: require 'helpers/foo'
 
-  render:
+  render: =>
     stringFromHelper = @foo.bar()
     @
 
@@ -527,7 +563,7 @@ module.exports = FooView</code></pre>
 
 <p>And from your Underscore templates:</p>
 
-<pre><code>&lt;p&gt;The string from helper is: &lt;%= this.foo.bar() %&gt;&lt;/p&gt;</code></pre>
+<pre class="prettyprint"><code>&lt;p&gt;The string from helper is: &lt;%= this.foo.bar() %&gt;&lt;/p&gt;</code></pre>
 
 <p>Singool comes with two helpers built in, and they are always made available to your views and Underscore templates:</p>
 
@@ -539,7 +575,7 @@ module.exports = FooView</code></pre>
   <li>
     <h4>breadcrumbs()</h4>
     <p>Set some breadcrumbs in your view:</p>
-<pre><code>class FooView extends require('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   render: =>
     @settings.breadcrumbs = [
@@ -550,7 +586,7 @@ module.exports = FooView</code></pre>
 
 module.exports = FooView</code></pre>
     <p>And use it from your Underscore template:</p>
-<pre><code>&lt;%= this.html.breadcrumbs() %&gt;</code></pre>
+<pre class="prettyprint"><code>&lt;%= this.html.breadcrumbs() %&gt;</code></pre>
   </li>
 </ul>
 
@@ -560,7 +596,7 @@ module.exports = FooView</code></pre>
 
 <p>An example of generating a form for User model in a View:</p>
 
-<pre><code>class FooView extends ('view')
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
 
   render: =>
     User = require 'models/user'
@@ -573,7 +609,7 @@ module.exports = FooView</code></pre>
 
 <p>Now from our template we utilize the Form helper for generating a form according to User model's schema with a submit and reset button:</p>
 
-<pre><code>&lt;%= this.form.create(model) %&gt;
+<pre class="prettyprint"><code>&lt;%= this.form.create(model) %&gt;
 &lt;fieldset&gt;
   &lt;%= this.form.inputs() %&gt;
 
@@ -581,6 +617,36 @@ module.exports = FooView</code></pre>
   &lt;%= this.form.reset() %&gt;
 &lt;/fieldset&gt;
 &lt;%= this.form.end() %&gt;</code></pre>
+
+<p>For showing validation errors on form submission from a view:</p>
+
+<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
+
+  events:
+    'submit form': 'submit'
+
+  submit: (e) =>
+    e.preventDefault()
+    attributes = @model.extract e.target
+
+    if @model.isNew()
+      if !@model.set attributes
+        # validation fail on adding
+        @form.showErrors e.target, @model
+      else
+        @collection.create @model
+        window.appRouter.navigate '!/some-other-page', true
+    else
+      @model.save attributes, 
+        error: (model, response) =>
+          # validation fail on editing
+          @form.showErrors e.target, model
+        success: (model, response) ->
+          window.appRouter.navigate '!/some-other-page', true
+
+    false
+
+module.exports = FooView</code></pre>
 
 <p>Methods:</p>
 
@@ -617,7 +683,7 @@ module.exports = FooView</code></pre>
 
 <p>Vendors are defined in <code>/public/js/app/config/vendors.json</code> file as an array:</p>
 
-<pre><code>["jquery.plugin.js"]</code></pre>
+<pre class="prettyprint"><code>["jquery.plugin.js"]</code></pre>
 
 <p>This will then load the jQuery plugin located at <code>/public/js/app/vendors/jquery.plugin.js</code>.</p>
 
@@ -629,22 +695,22 @@ module.exports = FooView</code></pre>
 
 <p>Suppose you have a plugin called <code>Tasks</code> at <code>/public/js/plugins/tasks</code>, you need to add it in your config file at <code>/config.js:</code></p>
 
-<pre><code>var plugins = ['tasks'];</code></pre>
+<pre class="prettyprint"><code>var plugins = ['tasks'];</code></pre>
 
 <p>All plugin classes can be accessed by <code>require()</code> function with the plugin named prefixed in the path:</p>
 
 <ul>
   <li>
     <p>Router:</p>
-    <pre><code>router = require 'tasks/config/router'</code></pre>
+    <pre class="prettyprint" data-lang="coffeescript"><code>router = require 'tasks/config/router'</code></pre>
   </li>
   <li>
     <p>Models:</p>
-    <pre><code>task = require 'tasks/models/task'</code></pre>
+    <pre class="prettyprint" data-lang="coffeescript"><code>task = require 'tasks/models/task'</code></pre>
   </li>
   <li>
     <p>Collections:</p>
-    <pre><code>tasks = require 'tasks/collections/tasks'</code></pre>
+    <pre class="prettyprint" data-lang="coffeescript"><code>tasks = require 'tasks/collections/tasks'</code></pre>
   </li>
   <li>...and so on</li>
 </ul>
@@ -661,6 +727,7 @@ module.exports = FooView</code></pre>
   /models
   /templates
   /vendors
+    /plugin.less
   /views
 </code></pre>
 
@@ -671,7 +738,7 @@ module.exports = FooView</code></pre>
 
 <p>To load your chosen theme, edit <code>/config.js</code> file:</p>
 
-<pre><code>var theme = 'my_theme';</code></pre>
+<pre class="prettyprint"><code>var theme = 'my_theme';</code></pre>
 
 <h4 id="theme-structure">File structure</h4>
 
@@ -689,7 +756,7 @@ module.exports = FooView</code></pre>
 
 <p>All themes must come with a layout. The default theme has a layout like this at <code>/public/themes/default/layouts/index.html</code>:</p>
 
-<pre><code>&lt;!DOCTYPE html&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot; /&gt;
@@ -721,11 +788,96 @@ module.exports = FooView</code></pre>
 
 <p>Theme's JavaScript files are treated as vendors. To load a custom JS file of your theme, edit the file at <code>/public/themes/my_theme/config/vendors.json</code></p>
 
-<pre><code>["my_theme.js"]</code></pre>
+<pre class="prettyprint"><code>["my_theme.js"]</code></pre>
 
 <p>This will then load the file at <code>/public/themes/my_theme/vendors/my_theme.js</code></p>
 
 
+
+
+
+<hr />
+
+
+
+
+<h2 id="test">Testing</h2>
+
+<p>Singool uses <a href="http://visionmedia.github.com/mocha/">Mocha</a> in combination with <a href="https://github.com/LearnBoost/expect.js">Expect.js</a> for testing BDD style.</p>
+
+<h3 id="run-tests">Run tests</h3>
+
+<p>To run tests, start the testing server:</p>
+
+<pre class="prettyprint"><code>$ cake test
+Test server running at http://localhost:3000</code></pre>
+
+<p>Visit <code>http://localhost:3000</code> from your browser and it will start the Mocha test runner.</p>
+
+<p>If you are using Chrome as your browser, it is best if you run tests from Incognito mode, otherwise the tests may fail because of JavaScript injections by Chrome extensions.</p>
+
+<h3 id="tests-structure">File structure</h3>
+
+<pre><code>/public/js/app/tests
+  /cases
+    /app.coffee
+  /fixtures</code></pre>
+
+<h3 id="write-tests">Writing tests</h3>
+
+<p>An example test case comes with Singool.js at: <code>/public/js/app/tests/cases/app.coffee</code></p>
+
+<pre class="prettyprint" data-lang="coffeescript"><code>describe 'App', ->
+  
+  foo = 'bar'
+  
+  it 'test foo', ->
+    expect(foo).to.be.a 'string'
+    expect(foo).to.eql 'bar'
+</code></pre>
+
+<p>We first <code>describe</code> our test case at the beginning of the file, then we test whether the variable <code>foo</code> is a string and the string is 'bar'.</p>
+
+<p>Test cases do not require to be exported by <code>module.exports</code> at the end of the file.</p>
+
+
+
+<hr />
+
+
+
+<h2 id="deploy">Deploying</h2>
+
+<h3 id="build">Build files</h3>
+
+<p>Via the <code>cake</code> command, you can compile your app into 3 files (layout, CSS and JS):</p>
+
+<pre><code>$ cake build
+Theme layout file written at: /public/index.html
+CSS file written at: /public/css/app.css
+JS file writen at: /public/js/app.js</code></pre>
+
+<h3 id="heroku">Heroku</h3>
+
+<p>Deploying a Singool.js app on <a href="http://heroku.com">Heroku</a> is very easy. It already comes with a Procfile at <code>/Procfile</code>.
+
+<p>Create the app on the Cedar stack:</p>
+
+<pre><code>$ heroku create --stack cedar
+Creating sharp-rain-871... done, stack is cedar
+http://sharp-rain-871.herokuapp.com/ | git@heroku.com:sharp-rain-871.git
+Git remote heroku added</code></pre>
+
+<p>Push to Heroku:</p>
+
+<pre><code>$ git push heroku master
+...
+-----> Launching... done, v2
+       http://sharp-rain-871.herokuapp.com deployed to Heroku</code></pre>
+
+<p>Scale the web process:</p>
+
+<pre><code>$ heroku ps:scale web=1</code></pre>
 
 
 
@@ -737,8 +889,27 @@ module.exports = FooView</code></pre>
       </footer>
     </div>
     <script src="./docs/scale.fix.js"></script>
+    <script src="./docs/prettify.js"></script>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://coffeescript.org/extras/coffee-script.js"></script>
     
 <script type="text/javascript">
+
+  $(document).ready(function() {
+    if (location.href.indexOf('?viewas=js') > -1) {
+      $('pre[data-lang="coffeescript"] code').each(function() {
+        var cs = $(this).html();
+        cs = String(cs).replace(/&gt;/g, '>');
+        var js = CoffeeScript.compile(cs);
+        $(this).html(js);
+      });
+
+      document.body.innerHTML = document.body.innerHTML.replace(/\.coffee/g, '.js');
+    }
+
+    window.prettyPrint && prettyPrint();
+  });
+
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-2124770-13']);
   _gaq.push(['_trackPageview']);

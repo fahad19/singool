@@ -1,0 +1,13 @@
+pre.prettyprint { padding: 5px; }
+pre .nocode { background-color: none; color: #000 }
+pre .str { color: #D14; } /* string */
+pre .kwd { color: #0086B3;} /* keyword */
+pre .com { color: #999988; font-style: italic; } /* comment */
+pre .typ { color: #000; } /* type */
+pre .lit { color: #000;} /* literal */
+pre .pun { color: #000 }    /* punctuation */
+pre .pln { color: #000 }    /* plaintext */
+pre .tag { color: #000080; } /* html/xml tag */
+pre .atn { color: #008080; } /* attribute name */
+pre .atv { color: #d14; } /* attribute value */
+pre .dec { color: #999999; font-weight: bold; } /* decimal */
