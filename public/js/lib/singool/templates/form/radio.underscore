@@ -1,0 +1,21 @@
+<div class="control-group">
+  <% if (options.label) { %>
+  <label class="control-label"><%= options.label %></label>
+  <% } %>
+  <div class="controls">
+    <% _.each(options.options, function(v, k) { %>
+      <% if (k == options.value) { %>
+        <label class="radio">
+          <input type="radio" name="<%= field %>" value="<%= k %>" checked="checked" />
+          <%= v %>
+        </label>
+      <% } else { %>
+        <label class="radio">
+          <input type="radio" name="<%= field %>" value="<%= k %>" />
+          <%= v %>
+        </label>
+      <% } %>
+    <% }); %>
+    <span class="help-inline"></span>
+  </div>
+</div>

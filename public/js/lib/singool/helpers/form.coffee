@@ -4,6 +4,7 @@ class FormHelper extends require('helper')
     text: require 'singool/templates/form/text'
     textarea: require 'singool/templates/form/textarea'
     select: require 'singool/templates/form/select'
+    radio: require 'singool/templates/form/radio'
     checkbox: require 'singool/templates/form/checkbox'
     object: require 'singool/templates/form/object'
     
@@ -91,6 +92,13 @@ class FormHelper extends require('helper')
       options: options
     out
   
+  radio: (field, options) ->
+    options - _.defaults options, @defaults.field
+    out = @templates.radio
+      field: field
+      options: options
+    out
+
   checkbox: (field, options) ->
     options = _.defaults options, @defaults.field
     out = @templates.checkbox
