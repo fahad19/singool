@@ -1,1 +1,7 @@
-<p>Built with <a href="http://fahad19.github.com/singool/">Singool</a></p>
+<div class="navbar navbar-fixed-bottom">
+  <div class="navbar-inner">
+    <div class="container">
+      <p>Built with <a href="http://fahad19.github.com/singool/">Singool</a></p>
+    </div>
+  </div>
+</div>

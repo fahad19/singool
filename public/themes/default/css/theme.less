@@ -24,4 +24,20 @@ header .navbar { margin-bottom: 0px; }
 .controls-container .controls + .controls { margin-top: 18px; }
 
 footer { margin-top: 20px; }
-footer p { text-align: center; }
+footer p { text-align: center; margin-top: 10px; }
+footer p a { color: #fff; }
+footer p a:hover { color: #fff; }
+
+@media (min-width: 1200px) {
+  input, textarea { .input-xxlarge }
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+  input, textarea { .input-xlarge; }
+}
+
+@media (max-width: 767px) {
+  body { padding-left: 0px; padding-right: 0px; }
+  .navbar-fixed-top, .navbar-fixed-bottom { margin-left: 0px; margin-right: 0px; }
+  input, textarea { .input-xlarge; }
+}
