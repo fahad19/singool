@@ -9,6 +9,7 @@ class FormHelper extends require('helper')
     object: require 'singool/templates/form/object'
     
     object_text: require 'singool/templates/form/object_text'
+    object_textarea: require 'singool/templates/form/object_textarea'
 
   defaults:
     field:
