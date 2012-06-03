@@ -372,6 +372,20 @@ module.exports = Task</code></pre>
 module.exports = Task</code></pre>
   </li>
   <li>
+    <h4>radio</h4>
+<pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
+
+  schema:
+    lucky:
+      type: 'radio'
+      label: 'Feeling lucky?'
+      options:
+        yes: 'Oh yes!'
+        no: 'Nope'
+
+module.exports = Task</code></pre>
+  </li>
+  <li>
     <h4>checkbox</h4>
 <pre class="prettyprint" data-lang="coffeescript"><code>class Task extends require('model')
 
