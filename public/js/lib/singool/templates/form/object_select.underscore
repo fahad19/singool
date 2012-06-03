@@ -1,0 +1,16 @@
+<div class="controls">
+  <select name="<%= field %>">
+    <% if (options.empty) { %>
+    <option value=""><%= options.empty %></option>
+    <% } %>
+    
+    <% _.each(options.options, function(v, k) { %>
+      <% if (k == options.value) { %>
+        <option value="<%= k %>" selected="selected"><%= v %></option>
+      <% } else { %>
+        <option value="<%= k %>"><%= v %></option>
+      <% } %>
+    <% }); %>
+  </select>
+  <span class="help-inline"></span>
+</div>
