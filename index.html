@@ -453,8 +453,41 @@ module.exports = User</code></pre>
   <li>notEmpty</li>
 </ul>
 
+<p>Model validation works on <code>set()</code> and <code>save()</code>:</p>
 
+<pre class="prettyprint" data-lang="coffeescript"><code>User = require 'models/user'
+user = new User
 
+# set
+if user.set attributes
+  alert 'successfully set!'
+else
+  alert 'validation fail'
+
+# save
+user.save attributes, 
+  error: (model, response) ->
+    alert 'validation fail'
+  success: (model, response) ->
+    alert 'successfully saved!'
+</code></pre>
+
+<p>You can also check if attributes are valid without having to <code>set()</code> or <code>save()</code>:</p>
+
+<pre class="prettyprint" data-lang="coffeescript"><code>User = require 'models/user'
+user = new User
+
+# check validation
+if user.validates(attributes)
+  alert 'valid!'
+else
+  alert 'validation fail :('
+  console.log 'validation errors', user.validationErrors
+</code></pre>
+
+<p>Once validation has failed, it will store the errors in the model's <code>validationrErrors</code> property.</p>
+
+<p>Take a look at <a href="#form-helper">form helper</a> section on how it all works together.</p>
 
 <h3 id="collections">Collections</h3>
 
