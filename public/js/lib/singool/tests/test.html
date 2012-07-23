@@ -11,13 +11,11 @@
 <body>
   <div id="mocha"></div>
   <script>
-  $(document).ready(function() {
-      var cases = require('singool/config').testCases;
-      for (var i in cases) {
-        require(cases[i]);
-      }
-      mocha.run();
-  });
+    var cases = require('singool/config').testCases;
+    for (var i in cases) {
+      require(cases[i]);
+    }
+    mocha.run();
   </script>
 </body>
 </html>
