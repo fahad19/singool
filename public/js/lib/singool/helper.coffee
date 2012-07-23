@@ -4,5 +4,11 @@ class Helper extends Backbone.Events
   
   constructor: (view) ->
     @view = view
+
+  beforeRender: =>
+    
+
+  afterRender: =>
+    
   
 module.exports = Helper
