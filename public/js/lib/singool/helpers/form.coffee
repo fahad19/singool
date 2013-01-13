@@ -62,13 +62,18 @@ class FormHelper extends require('helper')
       out += @input field, options
     out
   
-  input: (field, options) ->
-    _options = 
-      type: 'text'
-      label: field
-      value: null
+  input: (field, options = {}) ->
+    if _.isEmpty(options) and @model
+      _options = @model.schema[field]
+    else
+      _options =
+        type: 'text'
+        label: field
+        value: null
+
     if @model and @model.get field
       _options.value = @model.get field
+
     options = _.defaults options, _options
     out = @[options.type] field, options
     out
