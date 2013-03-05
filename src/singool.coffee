@@ -76,7 +76,7 @@ class Singool
     
   getVendorsByPath: (path) ->
     vendors = {}
-    if require('path').existsSync path + '/config/vendors.json'
+    if fs.existsSync path + '/config/vendors.json'
       pathVendors = JSON.parse fs.readFileSync path + '/config/vendors.json', 'utf8'
       for k, pathVendor of pathVendors
         vendors[pathVendor] = path + '/vendors/' + pathVendor
@@ -161,7 +161,7 @@ class Singool
     pluginsLess = ''
     for k, v of @config.plugins
       pluginLessPath = @config.pluginsPath + '/' + v + '/vendors/plugin.less'
-      if require('path').existsSync pluginLessPath
+      if fs.existsSync pluginLessPath
         pluginsLess += fs.readFileSync pluginLessPath, 'utf8'
     
     themeLessPath = @config.themesPath + '/' + @config.theme + '/css/theme.less'
@@ -202,7 +202,7 @@ class Singool
     if typeof callback == 'function'
       callback()
   
-  createServer: (static = false) ->
+  createServer: (serveStatic = false) ->
     app = express.createServer()
     
     app.configure =>
@@ -214,7 +214,7 @@ class Singool
       else
         res.send @readLayout()
     
-    if !static
+    if !serveStatic
       app.get '/css/app.css', (req, res) =>
         @css (source) ->
           res.header 'Content-Type', 'text/css'
@@ -229,18 +229,26 @@ class Singool
   
   clear: ->
     file = @config.publicPath + '/index.html'
-    if require('path').existsSync(file)
+    if fs.existsSync(file)
       fs.unlinkSync(file)
       console.log 'index.html deleted'
     
     file = @config.jsPath + '/' + @config.jsFile
-    if require('path').existsSync(file)
+    if fs.existsSync(file)
       fs.unlinkSync(file)
       console.log @config.jsFile + ' deleted'
     
     file = @config.cssPath + '/' + @config.cssFile
-    if require('path').existsSync(file)
+    if fs.existsSync(file)
       fs.unlinkSync(file)
       console.log @config.cssFile + ' deleted'
+
+  registerTasks: ->
+    tasks = fs.readdirSync module.id.replace 'singool.js', 'tasks/'
+    for k, taskFile of tasks
+      taskName = taskFile.replace '.js', ''
+      T = require './tasks/' + taskName
+      t = new T @
+      task taskName, t.description, t.run
 
 module.exports = Singool
