@@ -1,7 +1,7 @@
 {
   "name": "singool",
   "description": "Node module for Singool.js framework",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": "Fahad Ibnay Heylaal <contact@fahad19.com>",
   "repository": "git://github.com/fahad19/singool-js",
   "main": "index",
