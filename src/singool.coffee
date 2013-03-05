@@ -15,6 +15,8 @@ class Singool
   jsPackage: null
   
   cssPackage: null
+
+  _compilers: {}
   
   defaults:
     theme: null
@@ -84,30 +86,16 @@ class Singool
     vendors
   
   defaultCompilers: ->
-    compilers =
-      singool: (module, filename) =>
-        source = ''
-        if filename.indexOf 'singool/config/index.singool' > -1
-          content =
-            theme: @config.theme
-            plugins: @config.plugins
-            test: @config.test
-          
-          if @config.test
-            content.testCases = @testCases()
-          
-          source = 'module.exports = ' + JSON.stringify(content) + ';'
-        module._compile source, filename
+    compilers = {}
+    compilerFiles = fs.readdirSync module.id.replace _.last(module.id.split('/')), 'compilers/'
+    for k, v of compilerFiles
+      compilerName = v.replace '.js', ''
+      if !compilerName then continue
 
-      coffee: (module, filename) =>
-        source = fs.readFileSync filename, 'utf8'
-        module._compile cs.compile(source), filename
+      Compiler = require './compilers/' + compilerName
+      @_compilers[compilerName] = new Compiler @
+      compilers[compilerName] = @_compilers[compilerName].run
 
-      underscore: (module, filename) =>
-        source = fs.readFileSync(filename, 'utf8')
-        source = 'module.exports = _.template(' + util.inspect(source) + ');'
-        module._compile source, filename
-    
     compilers
   
   testCases: ->
@@ -244,7 +232,7 @@ class Singool
       console.log @config.cssFile + ' deleted'
 
   registerTasks: ->
-    tasks = fs.readdirSync module.id.replace 'singool.js', 'tasks/'
+    tasks = fs.readdirSync module.id.replace _.last(module.id.split('/')), 'tasks/'
     for k, taskFile of tasks
       taskName = taskFile.replace '.js', ''
       T = require './tasks/' + taskName
