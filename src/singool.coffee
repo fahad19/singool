@@ -36,9 +36,6 @@ class Singool
     @config = _.defaults config, @defaults
     @compilers()
     @generators()
-    @prepare()
-
-  prepare: ->
 
   generators: ->
     Css  = require './generators/css'
