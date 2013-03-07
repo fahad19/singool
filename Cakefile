@@ -1,5 +1,5 @@
 config  = require './config'
-Singool = require 'singool'
+Singool = require './core'
 
 singool = new Singool config
 singool.registerTasks()
