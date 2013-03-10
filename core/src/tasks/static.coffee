@@ -1,4 +1,4 @@
-Server = require './Server'
+Server = require './server'
 
 class Static extends Server
 
