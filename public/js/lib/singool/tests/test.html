@@ -15,9 +15,16 @@
     for (var i in cases) {
       require(cases[i]);
     }
-    mocha
-      .globals(['script*'])
-      .run();
+    
+    mocha.setup({
+      ui: 'bdd', 
+      globals: ['script*', 'jQuery*']
+    });
+    if (window.mochaPhantomJS) {
+      mochaPhantomJS.run();
+    } else {
+      mocha.run();
+    }
   </script>
 </body>
 </html>

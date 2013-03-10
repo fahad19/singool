@@ -12,6 +12,7 @@
     "less": "1.3.x",
     "stitch-extra": "0.3.x",
     "uglify-js": "1.2.x",
-    "findit": "0.1.x"
+    "findit": "0.1.x",
+    "mocha-phantomjs": "2.x"
   }
 }

@@ -102,6 +102,7 @@
     <a href="#test">Testing</a>
     <ul>
       <li><a href="#run-tests">Run tests</a></li>
+      <li><a href="#headless-tests">Headless testing</a></li>
       <li><a href="#tests-structure">File structure</a></li>
       <li><a href="#write-tests">Writing tests</a></li>
     </ul>
@@ -157,7 +158,7 @@
 $ cd singool
 $ git submodule init
 $ git submodule update
-$ npm install</code></pre>
+$ npm install .</code></pre>
 
 <h3 id="usage">Usage</h3>
 
@@ -862,16 +863,26 @@ module.exports = FooView</code></pre>
 
 <p>Singool uses <a href="http://visionmedia.github.com/mocha/">Mocha</a> in combination with <a href="https://github.com/LearnBoost/expect.js">Expect.js</a> for testing BDD style.</p>
 
-<h3 id="run-tests">Run tests</h3>
+<h3 id="run-tests">Run tests in the browser</h3>
 
 <p>To run tests, start the testing server:</p>
 
-<pre class="prettyprint"><code>$ cake test
+<pre class="prettyprint"><code>$ cake test-server
 Test server running at http://localhost:3000</code></pre>
 
 <p>Visit <code>http://localhost:3000</code> from your browser and it will start the Mocha test runner.</p>
 
 <p>If you are using Chrome as your browser, it is best if you run tests from Incognito mode, otherwise the tests may fail because of JavaScript injections by Chrome extensions.</p>
+
+<h3 id="headless-tests">Headless testing</h3>
+
+<p>You can also run the tests directly from the CLI using <a href="http://phantomjs.org/">PhantomJS</a>. Make sure you have it in your machine first:</p>
+
+<pre><code>$ brew update && brew install phantomjs</code></pre>
+
+<p>Now you can simply run the tests by:</p>
+
+<pre><code>$ cake test</code></pre>
 
 <h3 id="tests-structure">File structure</h3>
 
