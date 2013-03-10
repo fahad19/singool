@@ -21,9 +21,3 @@ describe 'Singool: helper', ->
     expect(fooView.foo).to.be.an 'object'
     expect(fooView.foo.view).to.be.an 'object'
     expect(fooView.foo.view).to.eql fooView
-
-  it 'should fire beforeRender callback', ->
-    expect(fooView.setByHelperBeforeRender).to.eql true
-
-  it 'should fire afterRender callback', ->
-    expect(fooView.$('span').hasClass('helper-after-render')).to.eql true

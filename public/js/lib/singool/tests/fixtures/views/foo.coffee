@@ -5,18 +5,8 @@ class Foo extends require('singool/view')
   helpers:
     foo: require 'singool/tests/fixtures/helpers/foo'
 
-  setByBeforeRender: false
-
-  setByHelperBeforeRender: false
-  
-  beforeRender: =>
-    @setByBeforeRender = true
-
   render: =>
     $(@el).html @template
     @
-
-  afterRender: =>
-    @$('span').addClass 'after-render'
 
 module.exports = Foo

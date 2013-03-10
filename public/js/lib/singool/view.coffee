@@ -21,24 +21,4 @@ class View extends Backbone.View
     for k, v of @helpers
       @[k] = new v @
 
-    @render = _.wrap @render, (render) =>
-      for helper, h of @helpers
-        @[helper].beforeRender()
-
-      @beforeRender()
-      
-      render()
-
-      for helper, h of @helpers
-        @[helper].afterRender()
-
-      @afterRender()
-      @
-
-  beforeRender: () =>
-    
-
-  afterRender: () =>
-    
-
 module.exports = View

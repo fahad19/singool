@@ -566,24 +566,6 @@ module.exports = FooView</code></pre>
   
 module.exports = AppRouter</code></pre>
 
-<p>Singool.js has introduced two new callback methods in Views, for before and after render():</p>
-
-<pre class="prettyprint" data-lang="coffeescript"><code>class FooView extends require('view')
-
-  template: require 'templates/foo/index'
-
-  beforeRender: =>
-    console.log 'beforeRender'
-
-  render: =>
-    @$el.html @template()
-    @
-
-  afterRender: =>
-    console.log 'afterRender'
-
-module.exports = FooView</code></pre>
-
 <p>Read more about Backbone.View <a href="http://documentcloud.github.com/backbone/#View">here</a>.</p>
 
 
@@ -630,18 +612,6 @@ module.exports = FooView</code></pre>
 <p>And from your Underscore templates:</p>
 
 <pre class="prettyprint"><code>&lt;p&gt;The string from helper is: &lt;%= this.foo.bar() %&gt;&lt;/p&gt;</code></pre>
-
-<p>Singool.js has introduced two new callback methods in Helpers, for before and after render() of Views:</p>
-
-<pre class="prettyprint" data-lang="coffeescript"><code>class FooHelper extends require('helper')
-
-  beforeRender: ->
-    console.log 'beforeRender'
-
-  afterRender: ->
-    console.log 'afterRender'
-
-module.exports = FooHelper</code></pre>
 
 <p>You can access View from within a Helper like this:</p>
 
