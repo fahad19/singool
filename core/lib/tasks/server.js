@@ -13,7 +13,7 @@
       };
     }
 
-    Server.prototype.description = 'Readl time server';
+    Server.prototype.description = 'Real time server';
 
     Server.prototype.serveStatic = false;
 

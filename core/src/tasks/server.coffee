@@ -2,7 +2,7 @@ class Server
 
   constructor: (@singool) ->
 
-  description: 'Readl time server'
+  description: 'Real time server'
 
   serveStatic: false
 
