@@ -110,6 +110,11 @@ class Singool
     @js.clear()
     @css.clear()
 
+  rootPath: ->
+    currentPath = module.id.split '/'
+    rootPath = (_.first currentPath, currentPath.length - 3).join '/'
+    rootPath
+
   registerTasks: ->
     tasks = fs.readdirSync module.id.replace _.last(module.id.split('/')), 'tasks/'
     for k, taskFile of tasks

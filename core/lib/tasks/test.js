@@ -42,13 +42,10 @@
     };
 
     Test.prototype.mochaPhantom = function() {
-      var appPath, appPathS, cmd, currentPath, currentPathS,
+      var cmd, rootPath,
         _this = this;
-      currentPath = module.id;
-      currentPathS = currentPath.split('/');
-      appPathS = _.first(currentPathS, currentPathS.length - 4);
-      appPath = appPathS.join('/');
-      cmd = appPath + '/node_modules/.bin/mocha-phantomjs ' + this.url;
+      rootPath = this.singool.rootPath();
+      cmd = rootPath + '/node_modules/.bin/mocha-phantomjs ' + this.url;
       console.log('Running command: ' + cmd);
       return exec(cmd, function(error, stdout, stderr) {
         if (error) {

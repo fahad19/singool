@@ -23,11 +23,8 @@ class Test
     console.log 'Test server running at ' + @url
 
   mochaPhantom: =>
-    currentPath  = module.id
-    currentPathS = currentPath.split '/'
-    appPathS     = _.first currentPathS, currentPathS.length - 4
-    appPath      = appPathS.join '/'
-    cmd          = appPath + '/node_modules/.bin/mocha-phantomjs ' + @url
+    rootPath = @singool.rootPath()
+    cmd      = rootPath + '/node_modules/.bin/mocha-phantomjs ' + @url
     
     console.log 'Running command: ' + cmd
     exec cmd, (error, stdout, stderr) =>

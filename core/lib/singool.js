@@ -142,6 +142,13 @@
       return this.css.clear();
     };
 
+    Singool.prototype.rootPath = function() {
+      var currentPath, rootPath;
+      currentPath = module.id.split('/');
+      rootPath = (_.first(currentPath, currentPath.length - 3)).join('/');
+      return rootPath;
+    };
+
     Singool.prototype.registerTasks = function() {
       var T, k, t, taskFile, taskName, tasks, _results;
       tasks = fs.readdirSync(module.id.replace(_.last(module.id.split('/')), 'tasks/'));
