@@ -148,17 +148,16 @@
 
 <p>We will require <a href="http://nodejs.org/#download">Node.js with npm</a> installed.</p>
 
-<p>Once we have Node, we need to install <a href="http://coffeescript.org/">CoffeeScript</a>. It is not necessary for you to write your Singool application in CoffeeScript, but we need the <code>cake</code> command to run from command line.</p>
+<p>Once we have Node, we need to install <a href="http://coffeescript.org/">CoffeeScript</a> and <a href="http://twitter.github.com/bower/">Bower</a>. It is not necessary for you to write your Singool application in CoffeeScript, but we need the <code>cake</code> command to run from command line.</p>
 
-<pre><code>$ npm install -g coffee-script</code></pre>
+<pre><code>$ npm install -g coffee-script bower</code></pre>
 
 <h3 id="installation">Installation</h3>
 
 <pre><code>$ git clone git@github.com:fahad19/singool.git
 $ cd singool
-$ git submodule init
-$ git submodule update
-$ npm install .</code></pre>
+$ npm install .
+$ cake install</code></pre>
 
 <h3 id="usage">Usage</h3>
 
