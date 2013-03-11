@@ -24,9 +24,9 @@ var config = {
     pluginsPath
   ],
   vendors: [
-    publicPath + '/js/vendors/jquery.min.js',
-    publicPath + '/js/vendors/underscore-min.js',
-    publicPath + '/js/vendors/backbone-min.js',
+    publicPath + '/vendors/jquery/jquery.min.js',
+    publicPath + '/vendors/underscore/underscore-min.js',
+    publicPath + '/vendors/backbone/backbone-min.js',
     publicPath + '/js/init.js'
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "my-singool-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "backbone": "~0.9.10",
+    "mocha": "~1.8.1",
+    "jquery": "~1.9.1",
+    "expect": "~0.2.0",
+    "bootstrap": "~2.3.1"
+  }
+}
