@@ -5,3 +5,4 @@ public/index.html
 public/css/app.css
 public/js/app.js
 public/js/plugins/*
+public/vendors/*
