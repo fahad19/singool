@@ -45,12 +45,17 @@ describe 'Singool: model', ->
       priority: ''
       done: false
     expect(result).to.eql expected
-    
   
   it 'should validate attributes', ->
-    attrs =
-      title: ''
+    attrs = title: ''
     expect(foo.validates(attrs)).to.be false
     expect(foo.validationErrors.title).to.be.an 'object'
     expect(foo.validationErrors.title.notEmpty).to.be.an 'string'
 
+  it 'should not set attributes unless valid', ->
+    attrs = title: ''
+    expect(foo.set(attrs, {validate: true})).to.be false
+
+  it 'should not save attributes unless valid', ->
+    attrs = title: ''
+    expect(foo.save(attrs)).to.be false

@@ -687,19 +687,20 @@ module.exports = FooView</code></pre>
     attributes = @model.extract e.target
 
     if @model.isNew()
-      if !@model.set attributes
+      if !@model.set attributes, (validate: true)
         # validation fail on adding
         @form.showErrors e.target, @model
       else
         @collection.create @model
         window.appRouter.navigate '!/some-other-page', true
     else
-      @model.save attributes, 
+      if !(@model.save attributes, 
         error: (model, response) =>
           # validation fail on editing
           @form.showErrors e.target, model
         success: (model, response) ->
-          window.appRouter.navigate '!/some-other-page', true
+          window.appRouter.navigate '!/some-other-page', true)
+        @form.showErrors e.target, @model
 
     false
 
