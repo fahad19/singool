@@ -6,7 +6,7 @@
     "npm":  "1.2.x"
   },
   "dependencies": {
-    "bower": "0.8.x",
+    "bower": "1.8.x",
     "underscore": "1.4.x",
     "coffee-script": "1.6.x",
     "express": "2.x",
